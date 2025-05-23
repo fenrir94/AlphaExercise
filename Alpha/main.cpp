@@ -52,9 +52,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		// Your own update logic goes here
 		AEGfxPrint(pFont, pText, -w / 2, -h / 2, 1, 1, 1, 1, 1);
 
+		pongGame::checkGamePlay();
 
-
-
+		if (pongGame::gamePlay) {
+			pongGame pG;
+			pG.init_PongGame();
+			pG.update_PongGame();
+		}
 
 
 		// Your own rendering logic goes here
