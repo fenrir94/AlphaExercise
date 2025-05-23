@@ -14,7 +14,12 @@ public:
 
 	void exit_PongGame();
 
+	void convertTimetoText(f64 playTime);
+
+	void printTime();
+
 public:
-	double playTime;
+	f64 playTime;
+	char textPlayTime[10];
 };
 
