@@ -22,6 +22,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
 
+	// Load the font here 
+	s8 pFont = AEGfxCreateFont("Assets/liberation-mono.ttf", 72.f);
+
+	// Text to print
+	const char* pText = "Press Any Key";
+
+	f32 w, h;
+	AEGfxGetPrintSize(pFont, pText, 1.f, &w, &h);
+
 	// Changing the window title
 	AESysSetWindowTitle("PongGame");
 
@@ -40,7 +49,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			gGameRunning = 0;
 
 		// Your own update logic goes here
-
+		AEGfxPrint(pFont, pText, -w / 2, -h / 2, 1, 1, 1, 1, 1);
 
 		// Your own rendering logic goes here
 
