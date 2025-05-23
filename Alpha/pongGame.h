@@ -4,7 +4,7 @@ class pongGame
 public:
 	static bool gamePlay;
 
-	void checkGamePlay();
+	static void checkGamePlay();
 
 	void init_PongGame();
 
