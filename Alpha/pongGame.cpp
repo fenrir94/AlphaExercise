@@ -2,6 +2,7 @@
 #include <string>
 #include "AEEngine.h"
 #include "pongGame.h"
+#include "viewport.h"
 
 void pongGame::checkGamePlay()
 {
@@ -83,9 +84,7 @@ void pongGame::convertTimetoText(f64 playTime)
 void pongGame::printTime()
 {
     AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
-    s8 pFont = AEGfxCreateFont("Assets/liberation-mono.ttf", 72.f);
-
     f32 w, h;
-    AEGfxGetPrintSize(pFont, textPlayTime, 1.f, &w, &h);
-    AEGfxPrint(pFont, textPlayTime, -w/2, 1.f - h, 1, 1, 1, 1, 1);
+    AEGfxGetPrintSize(viewport::pFont, textPlayTime, 1.f, &w, &h);
+    AEGfxPrint(viewport::pFont, textPlayTime, -w/2, 1.f - h, 1, 1, 1, 1, 1);
 }

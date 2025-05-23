@@ -123,6 +123,7 @@ xcopy "$(SolutionDir)Extern\AlphaEngine\lib\fmod.dll" "$(OutDir)" /s /r /y /q</C
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="system.cpp" />
+    <ClCompile Include="viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Extern\AlphaEngine\include\AEAudio.h" />
@@ -140,6 +141,7 @@ xcopy "$(SolutionDir)Extern\AlphaEngine\lib\fmod.dll" "$(OutDir)" /s /r /y /q</C
     <ClInclude Include="Extern\AlphaEngine\include\AEVec2.h" />
     <ClInclude Include="pongGame.h" />
     <ClInclude Include="system.h" />
+    <ClInclude Include="viewport.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
