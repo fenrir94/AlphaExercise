@@ -9,6 +9,16 @@ void pongGame::checkGamePlay()
     }
 }
 
+bool pongGame::restartGamePlay()
+{
+    if (AEInputCheckTriggered(AEVK_R)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 void pongGame::init_PongGame()
 {
     std::cout << "Player1: "<< 0 << std::endl;
@@ -20,7 +30,6 @@ void pongGame::update_PongGame()
 {
     while (pongGame::gamePlay) {
         AESysFrameStart();
-        std::cout << "Pong Game Running" << std::endl;
         AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
 
         if (AEInputCheckTriggered(AEVK_ESCAPE))
@@ -29,12 +38,13 @@ void pongGame::update_PongGame()
             break;
         }
 
+        if (pongGame::restartGamePlay()) {
+            break;
+        }
+
         AESysFrameEnd();
     }
-    if (!pongGame::gamePlay) {
-        pongGame::exit_PongGame();
-    }
-    
+    pongGame::exit_PongGame();
 }
 
 void pongGame::exit_PongGame()
