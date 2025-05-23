@@ -2,6 +2,8 @@
 #include "AEEngine.h"
 #include "pongGame.h"
 
+bool pongGame::gamePlay = false;
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
@@ -11,7 +13,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
-
 
 	int gGameRunning = 1;
 
@@ -26,7 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	s8 pFont = AEGfxCreateFont("Assets/liberation-mono.ttf", 72.f);
 
 	// Text to print
-	const char* pText = "Press Any Key";
+	const char* pText = "Press [Space] to Play";
 
 	f32 w, h;
 	AEGfxGetPrintSize(pFont, pText, 1.f, &w, &h);
@@ -50,6 +51,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 		// Your own update logic goes here
 		AEGfxPrint(pFont, pText, -w / 2, -h / 2, 1, 1, 1, 1, 1);
+
+
+
+
+
 
 		// Your own rendering logic goes here
 
