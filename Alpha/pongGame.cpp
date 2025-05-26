@@ -11,7 +11,7 @@ void pongGame::checkGamePlay()
     }
 }
 
-bool pongGame::restartGamePlay()
+bool pongGame::restart_GamePlay()
 {
     if (AEInputCheckTriggered(AEVK_R)) {
         return true;
@@ -46,13 +46,13 @@ void pongGame::update_PongGame()
             break;
         }
 
-        if (pongGame::restartGamePlay()) {
+        if (pongGame::restart_GamePlay()) {
             break;
         }
 
 
-        pongGame::convertTimetoText(playTime);
-        pongGame::printTime();
+        pongGame::convert_TimetoText(playTime);
+        pongGame::print_Time();
 
 
         AESysFrameEnd();
@@ -65,7 +65,7 @@ void pongGame::exit_PongGame()
 
 }
 
-void pongGame::convertTimetoText(f64 playTime)
+void pongGame::convert_TimetoText(f64 playTime)
 {
     std::cout << this->playTime << std::endl;
     int currentTime = static_cast<int>(this->playTime);
@@ -81,7 +81,7 @@ void pongGame::convertTimetoText(f64 playTime)
     }
 }
 
-void pongGame::printTime()
+void pongGame::print_Time()
 {
     AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
     f32 w, h;

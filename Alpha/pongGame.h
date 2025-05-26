@@ -6,7 +6,7 @@ public:
 
 	static void checkGamePlay();
 
-	bool restartGamePlay();
+	bool restart_GamePlay();
 
 	void init_PongGame();
 
@@ -14,9 +14,9 @@ public:
 
 	void exit_PongGame();
 
-	void convertTimetoText(f64 playTime);
+	void convert_TimetoText(f64 playTime);
 
-	void printTime();
+	void print_Time();
 
 public:
 	f64 playTime;
