@@ -10,3 +10,4 @@ bool isRestart_PongGame()
 {
     return AEInputCheckTriggered(AEVK_R);
 }
+

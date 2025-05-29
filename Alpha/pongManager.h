@@ -1,6 +1,7 @@
 #pragma once
 #include "AGameState.h"
 #include "mainMenu.h"
+#pragma once
 #include "pongGame.h"
 
 class pongManager
@@ -19,11 +20,8 @@ private:
 	const char* textTitle;
 
 public:
-	static AGameState& gameState;
+	static AGameState* gameState;
 	static s8 pFont;
 
-	static void changeGameState_PongManager(AGameState& newGameState);
+	static void changeGameState_PongManager(AGameState* newGameState);
 };
-
-//extern AGameState& gameState;
-//extern s8 pFont;
