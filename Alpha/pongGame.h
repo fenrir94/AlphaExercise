@@ -17,9 +17,12 @@ public:
 
 	void print_Time();
 
+public:
 	f64 playTime;
 
 	f32 widthTextTime, heightTextTime;
 	char textPlayTime[10];
 
 };
+
+extern pongGame pongGameState;
