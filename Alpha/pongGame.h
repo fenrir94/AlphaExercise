@@ -1,25 +1,25 @@
 #pragma once
-class pongGame
+#include "AGameState.h"
+#include "pongManager.h"
+
+class pongGame : public AGameState
 {
 public:
-	static bool gamePlay;
+	pongGame();
+	~pongGame();
 
-	static void checkGamePlay();
-
-	bool restart_GamePlay();
-
-	void init_PongGame();
-
-	void update_PongGame();
-
-	void exit_PongGame();
+	void initialize() override;
+	void update() override;
+	void print() override;
+	void exit() override;
 
 	void convert_TimetoText(f64 playTime);
 
 	void print_Time();
 
-public:
 	f64 playTime;
-	char textPlayTime[10];
-};
 
+	f32 widthTextTime, heightTextTime;
+	char textPlayTime[10];
+
+};

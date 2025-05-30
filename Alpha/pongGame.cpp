@@ -2,89 +2,89 @@
 #include <string>
 #include "AEEngine.h"
 #include "pongGame.h"
-#include "viewport.h"
 
-void pongGame::checkGamePlay()
+pongGame pongGameState;
+
+pongGame::pongGame()
 {
-    if (AEInputCheckTriggered(AEVK_SPACE)) {
-        pongGame::gamePlay = true;
-    }
+	this->playTime = 0.0f;
+
+	this->widthTextTime = 0.0f;
+	this->heightTextTime = 0.0f;
+
+	textPlayTime[0] = '0';
 }
 
-bool pongGame::restart_GamePlay()
+pongGame::~pongGame()
 {
-    if (AEInputCheckTriggered(AEVK_R)) {
-        return true;
-    }
-    else {
-        return false;
-    }
 }
 
-void pongGame::init_PongGame()
+void pongGame::initialize()
 {
-    this->playTime = 0.0f;
-    std::cout << "Player1: "<< 0 << std::endl;
-    std::cout << "Player2: "<< 0 << std::endl;
-    std::cout << "Pong Game Start" << std::endl;
+	this->playTime = 0.0f;
+
+	this->widthTextTime = 0.0f;
+	this->heightTextTime = 0.0f;
 }
 
-void pongGame::update_PongGame()
+void pongGame::update()
 {
-    while (pongGame::gamePlay) {
-        AESysFrameStart();
-        f64 dt = AEFrameRateControllerGetFrameTime();
-        this->playTime += dt;
-        //std::cout << playTime << std::endl;
-        AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
+
+	AESysFrameStart();
+	f64 dt = AEFrameRateControllerGetFrameTime();
+	this->playTime += dt;
+	//std::cout << playTime << std::endl;
+	AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
 
 
 
-        if (AEInputCheckTriggered(AEVK_ESCAPE))
-        {
-            pongGame::gamePlay = false;
-            break;
-        }
+	/*if (AEInputCheckTriggered(AEVK_ESCAPE))
+	{
+		pongGame::gamePlay = false;
+		break;
+	}
 
-        if (pongGame::restart_GamePlay()) {
-            break;
-        }
-
-
-        pongGame::convert_TimetoText(playTime);
-        pongGame::print_Time();
+	if (pongGame::restart_GamePlay()) {
+		break;
+	}*/
 
 
-        AESysFrameEnd();
-    }
-    pongGame::exit_PongGame();
+	pongGame::convert_TimetoText(playTime);
+	pongGame::print_Time();
+
+
+	AESysFrameEnd();
 }
 
-void pongGame::exit_PongGame()
+void pongGame::print()
 {
+	AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
 
+	this->print_Time();
+}
+
+void pongGame::exit()
+{
 }
 
 void pongGame::convert_TimetoText(f64 playTime)
 {
-    std::cout << this->playTime << std::endl;
-    int currentTime = static_cast<int>(this->playTime);
-    std::cout << currentTime << std::endl;
-    int minutes = (currentTime % 3600) / 60;
-    int seconds = currentTime % 60;
+	std::cout << this->playTime << std::endl;
+	int currentTime = static_cast<int>(this->playTime);
+	std::cout << currentTime << std::endl;
+	int minutes = (currentTime % 3600) / 60;
+	int seconds = currentTime % 60;
 
-    std::cout << minutes << ":" << seconds << std::endl;
+	std::cout << minutes << ":" << seconds << std::endl;
 
-    // Text to print
-    if (this->textPlayTime != nullptr) {
-        snprintf(textPlayTime, 10, "%02d:%02d", minutes, seconds);
-    }
+	// Text to print
+	if (this->textPlayTime != nullptr) {
+		snprintf(textPlayTime, 10, "%02d:%02d", minutes, seconds);
+	}
 }
 
 void pongGame::print_Time()
 {
-    AEGfxSetBackgroundColor(0.0f, 0.0f, 0.0f);
-    f32 w, h;
-    AEGfxGetPrintSize(viewport::pFont, textPlayTime, 1.f, &w, &h);
-    AEGfxPrint(viewport::pFont, textPlayTime, -w/2, 1.f - h, 1, 1, 1, 1, 1);
+	AEGfxGetPrintSize(pongManager::pFont, textPlayTime, 1.f, &this->widthTextTime, &this->heightTextTime);
+	AEGfxPrint(pongManager::pFont, textPlayTime, -(this->widthTextTime) / 2, 1.f - (this->heightTextTime), 1, 1, 1, 1, 1);
 }
