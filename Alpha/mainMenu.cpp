@@ -1,5 +1,6 @@
 #include <iostream>
 #include "mainMenu.h"
+#include "pongGame.h"
 #include "pongManager.h"
 #include "utilityKey.h"
 
@@ -22,7 +23,9 @@ void mainMenu::initialize()
 
 void mainMenu::update()
 {
-
+	if (isStart_PongGame()) {
+		pongManager::changeGameState_PongManager(&pongGameState);
+	}
 }
 
 void mainMenu::print()
