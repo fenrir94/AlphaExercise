@@ -25,6 +25,7 @@ void mainMenu::update()
 {
 	if (isStart_PongGame()) {
 		pongManager::changeGameState_PongManager(&pongGameState);
+		exit();
 	}
 }
 
