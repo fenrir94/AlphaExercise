@@ -2,6 +2,8 @@
 #include <string>
 #include "AEEngine.h"
 #include "pongGame.h"
+#include "pongManager.h"
+#include "utilityKey.h"
 
 pongGame pongGameState;
 
@@ -35,16 +37,11 @@ void pongGame::update()
 
 	pongGame::convert_TimetoText(playTime);
 
-	/*if (AEInputCheckTriggered(AEVK_ESCAPE))
+	if (isRestart_PongGame()) 
 	{
-		pongGame::gamePlay = false;
-		break;
+		pongManager::changeGameState_PongManager(&pongGameState);
+		exit();
 	}
-
-	if (pongGame::restart_GamePlay()) {
-		break;
-	}*/
-	
 }
 
 void pongGame::print()
