@@ -1,3 +1,4 @@
+#include <iostream>
 #include "pongManager.h"
 #include "AGameState.h"
 #include "mainMenu.h"
@@ -16,7 +17,7 @@ pongManager::pongManager()
 
 pongManager::~pongManager()
 {
-
+	AEGfxDestroyFont(this->pFont);
 }
 
 void pongManager::init_PongManager(HINSTANCE hInstance, int nCmdShow)
@@ -30,12 +31,12 @@ void pongManager::init_PongManager(HINSTANCE hInstance, int nCmdShow)
 		false,
 		NULL);
 
-	pongManager::pFont = AEGfxCreateFont("Assets/liberation-mono.ttf", 72.f);
-
 	AESysSetWindowTitle(this->textTitle);
 
-	AESysReset();
+	pongManager::pFont = AEGfxCreateFont("Assets/liberation-mono.ttf", 72.f);
 
+
+	AESysReset();
 }
 
 void pongManager::changeGameState_PongManager(AGameState* newGameState)
@@ -48,10 +49,14 @@ void pongManager::update_PongManager()
 {
 	
 	while (1) {
+		AESysFrameStart();
 		pongManager::gameState->update();
 		pongManager::gameState->print();
+		
+		if (AEInputCheckTriggered(AEVK_ESCAPE)|| 0 == AESysDoesWindowExist()) {
+			break;
+		}
+		AESysFrameEnd();
 	}
-	if () {
-		return;
-	}
+	return;
 }
