@@ -20,6 +20,7 @@ private:
 	const char* textTitle;
 
 public:
+	bool isGameRunning;
 	static AGameState* gameState;
 	static s8 pFont;
 

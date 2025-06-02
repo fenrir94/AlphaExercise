@@ -9,6 +9,7 @@ s8 pongManager::pFont;
 
 pongManager::pongManager()
 {
+	this->isGameRunning = TRUE;
 	this->widthWindow = 1600;
 	this->heightWindow = 900;
 
@@ -48,12 +49,13 @@ void pongManager::changeGameState_PongManager(AGameState* newGameState)
 void pongManager::update_PongManager()
 {
 	
-	while (1) {
+	while (isGameRunning) {
 		AESysFrameStart();
 		pongManager::gameState->update();
 		pongManager::gameState->print();
 		
 		if (AEInputCheckTriggered(AEVK_ESCAPE)|| 0 == AESysDoesWindowExist()) {
+			isGameRunning = FALSE;
 			break;
 		}
 		AESysFrameEnd();
