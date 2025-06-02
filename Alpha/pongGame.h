@@ -13,6 +13,8 @@ public:
 	void print() override;
 	void exit() override;
 
+	bool isRestart_PongGame();
+
 	void convert_TimetoText(f64 playTime);
 
 	void print_Time();

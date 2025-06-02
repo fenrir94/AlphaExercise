@@ -41,3 +41,7 @@ void mainMenu::exit()
 
 }
 
+bool mainMenu::isStart_PongGame()
+{
+	return AEInputCheckTriggered(AEVK_SPACE);
+}

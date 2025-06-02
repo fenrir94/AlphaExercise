@@ -55,6 +55,11 @@ void pongGame::exit()
 {
 }
 
+bool pongGame::isRestart_PongGame()
+{
+	return AEInputCheckTriggered(AEVK_R);
+}
+
 void pongGame::convert_TimetoText(f64 playTime)
 {
 	int currentTime = static_cast<int>(this->playTime);

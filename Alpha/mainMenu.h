@@ -14,6 +14,8 @@ public:
 	void print() override;
 	void exit() override;
 
+	bool isStart_PongGame();
+
 private:
 	f32 widthText, heightText;
 	const char* textPress;
