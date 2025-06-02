@@ -99,12 +99,19 @@ xcopy "$(SolutionDir)Extern\AlphaEngine\lib\fmod.dll" "$(OutDir)" /s /r /y /q</C
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AGameState.cpp" />
     <ClCompile Include="barebones.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="playing_audio.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="pongGame.cpp" />
+    <ClCompile Include="pongManager.cpp" />
     <ClCompile Include="render_multiple_sprites.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -118,10 +125,13 @@ xcopy "$(SolutionDir)Extern\AlphaEngine\lib\fmod.dll" "$(OutDir)" /s /r /y /q</C
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="spritesheet_animation.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="utilityKey.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AGameState.h" />
     <ClInclude Include="Extern\AlphaEngine\include\AEAudio.h" />
     <ClInclude Include="Extern\AlphaEngine\include\AEEngine.h" />
     <ClInclude Include="Extern\AlphaEngine\include\AEExport.h" />
@@ -135,6 +145,10 @@ xcopy "$(SolutionDir)Extern\AlphaEngine\lib\fmod.dll" "$(OutDir)" /s /r /y /q</C
     <ClInclude Include="Extern\AlphaEngine\include\AETypes.h" />
     <ClInclude Include="Extern\AlphaEngine\include\AEUtil.h" />
     <ClInclude Include="Extern\AlphaEngine\include\AEVec2.h" />
+    <ClInclude Include="pongGame.h" />
+    <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="pongManager.h" />
+    <ClInclude Include="utilityKey.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
